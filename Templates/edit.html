@@ -1,0 +1,42 @@
+{% extends 'parent.html' %}
+{% block content %}
+
+{% block title %}
+Edit Student Page
+{% endblock %}
+<div class="container">
+<h2 align="center">EDIT STUDENT PAGE</h2>
+
+<form method="post" >
+    {% csrf_token %}
+    <div class="">
+  <label for="tbname" class="form-label">Name</label>
+  <input type="text" value="{{student.name}}" class="form-control"  id="tbname" name="tbname"><br/>
+    </div>
+    <div class="mb-3">
+    <label for="ddlcourse" class="form-label">Course</label>
+    <select name="ddlcourse" id="ddlcourse" class="form-select" aria-label="Default select example">
+     <option selected>{{student.course}}</option>
+        {% for c in courses %}
+    <option>{{ c.cname }}</option>
+    {% endfor %}
+</select>
+        </div>
+        <div class="mb-3">
+  <label for="tbphno" class="form-label">Phone No</label>
+ <input type="text" value="{{student.phone}}" class="form-control"  id="tbphno" name="tbphno"><br/>
+    </div>
+        <div class="mb-3">
+  <label for="tbemail" class="form-label">Email</label>
+  <input type="text" value="{{student.email}}" class="form-control"  id="tbemail" name="tbemail"><br/>
+    </div>
+        <div class="mb-3">
+  <label for="tbage" class="form-label">Age</label>
+  <input type="text" value="{{student.age}}" class="form-control"  id="tbage" name="tbage"><br/>
+    </div>
+
+    <input type="submit" value="UPDATE " class="btn btn-outline-warning btn-lg form-control">
+    </form>
+</div>
+
+{% endblock %}

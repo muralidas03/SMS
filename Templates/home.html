@@ -1,0 +1,35 @@
+{% extends 'parent.html' %}
+{% block content %}
+<div class="container bg-light">
+<h2 align="center"> Student List</h2>
+<table class="table">
+    <thead>
+        <th>Name</th>
+
+
+        <th>Age</th>
+        <th>Mobile Number</th>
+        <th>Email Id</th>
+        <th>Course</th>
+    </thead>
+    <tbody>
+    {% for stud in studs %}
+    <tr>
+        <td>{{stud.name}}</td>
+        <td>{{stud.age}}</td>
+        <td>{{stud.phone}}</td>
+        <td>{{stud.email}}</td>
+        <td>{{stud.course}}</td>
+        <td><a class="btn btn-warning" href="{% url 'edit' stud.id %}"><i class="bi bi-pencil-square"></i>UPDATE</a></td>
+        <td><a class="btn btn-danger" href="{% url 'delete' stud.id %}"><i class="bi bi-trash3-fill"></i>Delete</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    <a class="btn btn-primary btn-lg" href="{% url 'add' %}">ADD NEW Student</a>
+    </div>
+{% endblock %}
+
+{% block title %}
+Student list
+{% endblock %}
